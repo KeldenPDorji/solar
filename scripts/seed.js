@@ -23,6 +23,23 @@ const seedDb = async () => {
 
         console.log('✅ Admin user created:', admin.email);
 
+        // Create Saroj Sanyasi admin user
+        const sarojPassword = await hashPassword('Saroj@123456');
+        const [sarojAdmin] = await db
+            .insert(users)
+            .values({
+                email: 'sarojsanyasi.cst@rub.edu.bt',
+                passwordHash: sarojPassword,
+                firstName: 'Saroj',
+                lastName: 'Sanyasi',
+                role: 'admin',
+                country: 'Bhutan',
+                isActive: true,
+            })
+            .returning();
+
+        console.log('✅ Admin user created:', sarojAdmin.email);
+
         // Create test user
         const userPassword = await hashPassword('User@123456');
         const [testUser] = await db
