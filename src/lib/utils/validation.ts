@@ -38,3 +38,43 @@ export const createEventSchema = z.object({
 export type RegisterInput = z.infer<typeof registerSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;
 export type CreateEventInput = z.infer<typeof createEventSchema>;
+
+// Event Registration schemas
+export const eventRegistrationSchema = z.object({
+    eventId: z.string().uuid('Invalid event ID'),
+    email: z.string().email('Invalid email address'),
+    firstName: z.string().min(2, 'First name required'),
+    lastName: z.string().min(2, 'Last name required'),
+    phone: z.string().optional(),
+    organization: z.string().optional(),
+});
+
+// News schemas
+export const createNewsSchema = z.object({
+    title: z.string().min(5, 'Title must be at least 5 characters'),
+    slug: z.string().min(3, 'Slug required').regex(/^[a-z0-9-]+$/, 'Invalid slug format'),
+    content: z.string().min(20, 'Content required'),
+    shortExcerpt: z.string().max(500).optional(),
+    imageUrl: z.string().url('Invalid image URL').optional(),
+    status: z.enum(['draft', 'published']),
+    featured: z.boolean().optional(),
+});
+
+// Announcement schemas
+export const createAnnouncementSchema = z.object({
+    title: z.string().min(5, 'Title must be at least 5 characters'),
+    content: z.string().min(10, 'Content required'),
+    status: z.enum(['draft', 'published']),
+    priority: z.enum(['low', 'normal', 'high', 'urgent']),
+    expiresAt: z.coerce.date().optional(),
+});
+
+// Registration status check
+export const registrationStatusCheckSchema = z.object({
+    email: z.string().email('Invalid email address'),
+});
+
+export type EventRegistrationInput = z.infer<typeof eventRegistrationSchema>;
+export type CreateNewsInput = z.infer<typeof createNewsSchema>;
+export type CreateAnnouncementInput = z.infer<typeof createAnnouncementSchema>;
+export type RegistrationStatusCheckInput = z.infer<typeof registrationStatusCheckSchema>;

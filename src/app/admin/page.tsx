@@ -31,7 +31,7 @@ export default function AdminDashboard() {
 
             <div className="bg-white rounded-lg shadow p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <a
                         href="/admin/events"
                         className="p-4 bg-blue-50 border-2 border-blue-200 rounded-lg hover:bg-blue-100 transition-colors"
@@ -52,6 +52,20 @@ export default function AdminDashboard() {
                     >
                         <p className="font-semibold text-purple-600">📋 Registrations</p>
                         <p className="text-sm text-gray-600">Review and approve registrations</p>
+                    </a>
+                    <a
+                        href="/admin/news"
+                        className="p-4 bg-yellow-50 border-2 border-yellow-200 rounded-lg hover:bg-yellow-100 transition-colors"
+                    >
+                        <p className="font-semibold text-yellow-600">📰 Blog & News</p>
+                        <p className="text-sm text-gray-600">Create and manage articles</p>
+                    </a>
+                    <a
+                        href="/admin/announcements"
+                        className="p-4 bg-red-50 border-2 border-red-200 rounded-lg hover:bg-red-100 transition-colors"
+                    >
+                        <p className="font-semibold text-red-600">📢 Announcements</p>
+                        <p className="text-sm text-gray-600">Create platform announcements</p>
                     </a>
                 </div>
             </div>
